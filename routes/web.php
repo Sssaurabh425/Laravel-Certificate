@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/tcpdf/{id?}', 'HomeController@index')->name('createPDF');
-Route::get('/teacher', 'HomeController@teacher')->name('teacher');
-Route::post('/saveteacher', 'HomeController@saveteacher')->name('saveteacher');
+Route::get('/tcpdf/{id?}', 'CertificateController@index')->name('createPDF');
+Route::get('/teacher', 'CertificateController@teacher')->name('teacher');
+Route::post('/saveteacher', 'CertificateController@saveteacher')->name('saveteacher');
+
+Auth::routes();
+
+Route::get('/home', 'CertificateController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'CertificateController@index')->name('home');
