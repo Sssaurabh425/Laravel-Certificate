@@ -14,7 +14,7 @@ class CertificateController extends Controller
     }
     public function index($id = 0)
     {
-        $data['teacher'] = DB::table('tbl_teacher')->where('id', $id)->get();
+        $data['teacher'] = DB::table('teachers')->where('id', $id)->get();
         $html = '<div style="width:800px; height:1000px; padding:20px; text-align:center; border: 10px solid #787878">
        <div style="width:750px; height:1000px; padding:20px; text-align:center; border: 5px solid #787878">
                 <span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
@@ -35,7 +35,7 @@ class CertificateController extends Controller
     }
     public function teacher()
     {
-        $data['teacher'] = DB::table('tbl_teacher')->get();
+        $data['teacher'] = DB::table('teachers')->get();
         return view('teacher')->with($data);
     }
     public function saveteacher(Request $request)
@@ -47,7 +47,7 @@ class CertificateController extends Controller
             'name' => $data['teachername'],
             'dob' => $data['teacherdob']
         );
-        DB::table('tbl_teacher')->insert($arr);
+        DB::table('teachers')->insert($arr);
         return redirect()->route('teacher');
     }
 }
