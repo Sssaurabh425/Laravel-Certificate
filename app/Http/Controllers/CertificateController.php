@@ -27,9 +27,10 @@ class CertificateController extends Controller
         );
         $html1 = '<div style="color: #FFF;font-size: 18px;"><b>For being generally awesome and kicking ass</b></div>';
         $html3 = '<div style="font-size:35px;font-family: Courier, serif;">' . $data['teacher'][0]->name . '</div>';
-        $html2 =  '<div style="font-size:15px;">Here some extra information about completing the course and such... you could populate this with some more variable information, maybe customize it based on how well the learner did, etc.
-    </div>';
-        PDF::SetProtection(array('print', 'copy', 'modify'), $data['teacher'][0]->dob, "ourcodeworld-master", 0, null);
+        $html2 =  '<div style="font-size:15px;">Here some extra information about completing the course name <b>'.$data['teacher'][0]->coursename.'</b> and such... you could populate this with some more variable information, maybe customize it based on how well the learner did, etc.</div>';
+        $html4=   '<div style="font-size:7px;">Scan To Verify</div>';
+        $html5=   '<div style="font-size:15px;text-align:center;">'.$data['teacher'][0]->dateofcertification.'</div>';
+        PDF::SetProtection(array('copy', 'modify'), $data['teacher'][0]->serialkey, "ourcodeworld-master", 0, null);
 
         // set document signature
         PDF::setSignature($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
@@ -37,12 +38,8 @@ class CertificateController extends Controller
         PDF::SetFont('helvetica', '', 12);
         PDF::SetTitle('Hello World');
         PDF::AddPage('l');
-
-        // print a line of text
-        $text = view('tcpdf');
-
-
-
+        // set style for barcode
+        
         // add image for signature
         // get the current page break margin
         $bMargin = PDF::getBreakMargin();
@@ -58,10 +55,23 @@ class CertificateController extends Controller
         PDF::writeHTMLCell(150, 0, 127, 67, $html1, 0, 0, 0, true, 'R', true);
         PDF::writeHTMLCell(150, 0, 43, 110, $html3, 0, 0, 0, true, 'L', true);
         PDF::writeHTMLCell(150, 0, 43, 125, $html2, 0, 0, 0, true, 'L', true);
+        PDF::writeHTMLCell(30, 0, 262, 0, $html4, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(50, 0, 40, 173, $html5, 0, 0, 0, true, 'C', true);
         PDF::Image('image/signature.png', 117, 165, 35, 15, 'PNG');
         // define active area for signature appearance
         PDF::setSignatureAppearance(117, 165, 35, 15);
+        $style = array(
+            'border' => 0,
+            'vpadding' => 0,
+            'hpadding' => 0,
+            'fgcolor' => array(0, 0, 0),
+            'bgcolor' => false, //array(255,255,255)
+            'module_width' => 1, // width of a single module in points
+            'module_height' =>1, // height of a single module in points
+        );
 
+        // QRCODE,L : QR-CODE Low error correction
+        PDF::write2DBarcode(route('createPDF',['id'=>$id]), 'QRCODE,L', 267, 5, 30, 30, $style, 'N');
         // save pdf PDF
 
         PDF::Output('hello_world.pdf');
@@ -75,10 +85,12 @@ class CertificateController extends Controller
     {
         $data = $request->all();
         //dd($data);
-
+        $permitted_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $arr = array(
             'name' => $data['teachername'],
-            'dob' => $data['teacherdob']
+            'dateofcertification' => $data['teacherdoc'],
+            'coursename' => $data['selectcourse'],
+            'serialkey' =>substr(str_shuffle($permitted_chars), 0, 6),
         );
         DB::table('teachers')->insert($arr);
         return redirect()->route('teacher');
