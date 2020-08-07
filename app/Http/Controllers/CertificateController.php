@@ -16,7 +16,8 @@ class CertificateController extends Controller
     }
     public function index($id = 0)
     {
-        $data['teacher'] = DB::table('teachers')->where('id', $id)->get();
+        $sid = decrypt($id);
+        $data['teacher'] = DB::table('teachers')->where('id', $sid)->get();
         // set certificate file
         $certificate = 'file://' . base_path() . '/public/certificate/tcpdf.crt';
 
