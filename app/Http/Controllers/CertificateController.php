@@ -16,8 +16,7 @@ class CertificateController extends Controller
     }
     public function index($id = 0)
     {
-        //$data['teacher'] = DB::table('teachers')->where('id', $id)->get();
-        $data['teacher'] = Teacher::findorFail($id)->get();
+        $data['teacher'] = DB::table('teachers')->where('id', $id)->get();
         // set certificate file
         $certificate = 'file://' . base_path() . '/public/certificate/tcpdf.crt';
 
@@ -28,19 +27,23 @@ class CertificateController extends Controller
             'Reason' => 'Testing TCPDF',
             'ContactInfo' => 'http://www.tcpdf.org',
         );
-        $html1 = '<div style="color: #FFF;font-size: 18px;"><b>For being generally awesome and kicking ass</b></div>';
-        $html3 = '<div style="font-size:35px;font-family: Courier, serif;">' . $data['teacher'][0]->name . '</div>';
-        $html2 =  '<div style="font-size:15px;">Here some extra information about completing the course name <b>' . $data['teacher'][0]->coursename . '</b> and such... you could populate this with some more variable information, maybe customize it based on how well the learner did, etc.</div>';
-        $html4 =   '<div style="font-size:7px;">Scan To Verify</div>';
-        $html5 =   '<div style="font-size:15px;text-align:center;">' . $data['teacher'][0]->dateofcertification . '</div>';
+        $html1 = '<div style="font-size: 22px;color:#777777;">For actively participating in</div>';
+        $html0 = '<div style="font-size:75px;font-family: EdwardianScriptITC;"><b>' . $data['teacher'][0]->name . '</b></div>';
+        $html2 =  '<div style="font-size: 22px;color:#777777;"><b>"' . $data['teacher'][0]->coursename . '"</b> Conducted by</div>';
+        $html3 =  '<div style="font-size: 22px;color:#777777;">Mr. Sandip Mitra representing e-Edport</div>';
+        $html4 =   '<div style="font-size:4px;">Scan To Verify</div>';
+        $html5 =   '<div style="font-size:18px;text-align:center;">' . $data['teacher'][0]->dateofcertification . '</div>';
+        $html6 =   '<div style="font-size:15px;text-align:center;"><b>Date</b></div>';
+        $html7 =   '<div style="font-size:15px;text-align:center;"><b>Mr. Sandip Mitra</b></div>';
+        $html8 =   '<div style="font-size:10px;text-align:center;">(Business consultant & advisor)</div>';
         PDF::SetProtection(array('copy', 'modify'), $data['teacher'][0]->serialkey, "ourcodeworld-master", 0, null);
 
         // set document signature
         PDF::setSignature($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
 
         PDF::SetFont('helvetica', '', 12);
-        PDF::SetTitle('Hello World');
-        PDF::AddPage('l');
+        PDF::SetTitle($data['teacher'][0]->name . ' Certificate');
+        PDF::AddPage();
         // set style for barcode
 
         // add image for signature
@@ -50,23 +53,27 @@ class CertificateController extends Controller
         $auto_page_break = PDF::getAutoPageBreak();
         // disable auto-page-break
         PDF::SetAutoPageBreak(false, 0);
-        PDF::Image('image/CertificateBackground_Cropped.png', 0, 0, 300, 200, '', '', '', false, 300, '', false, false, 0);
+        PDF::Image('image/certificate.png', 0, 0, 210, 298, '', '', '', false, 300, '', false, false, 0);
         PDF::SetAutoPageBreak($auto_page_break, $bMargin);
         // set the starting point for the page content
         PDF::setPageMark();
         // add view content
-        PDF::writeHTMLCell(150, 0, 127, 67, $html1, 0, 0, 0, true, 'R', true);
-        PDF::writeHTMLCell(150, 0, 43, 110, $html3, 0, 0, 0, true, 'L', true);
-        PDF::writeHTMLCell(150, 0, 43, 125, $html2, 0, 0, 0, true, 'L', true);
-        PDF::writeHTMLCell(30, 0, 262, 0, $html4, 0, 0, 0, true, 'C', true);
-        PDF::writeHTMLCell(50, 0, 40, 173, $html5, 0, 0, 0, true, 'C', true);
-        PDF::Image('image/signature.png', 117, 165, 35, 15, 'PNG');
+        PDF::writeHTMLCell(180, 0, 16, 155, $html1, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(190, 0, 10, 115, $html0, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(180, 0, 16, 163, $html2, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(180, 0, 16, 171, $html3, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(20, 0, 97, 225, $html4, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(50, 0, 35, 205, $html5, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(50, 0, 35, 213, $html6, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(80, 0, 120, 213, $html7, 0, 0, 0, true, 'C', true);
+        PDF::writeHTMLCell(80, 0, 120, 220, $html8, 0, 0, 0, true, 'C', true);
+        PDF::Image('image/signature.png', 140, 200, 35, 15, 'PNG');
         // define active area for signature appearance
-        PDF::setSignatureAppearance(117, 165, 35, 15);
+        PDF::setSignatureAppearance(140, 200, 35, 15);
         $style = array(
-            'border' => 0,
-            'vpadding' => 0,
-            'hpadding' => 0,
+            'border' => 1,
+            'vpadding' => 'auto',
+            'hpadding' => 'auto',
             'fgcolor' => array(0, 0, 0),
             'bgcolor' => false, //array(255,255,255)
             'module_width' => 1, // width of a single module in points
@@ -74,10 +81,10 @@ class CertificateController extends Controller
         );
 
         // QRCODE,L : QR-CODE Low error correction
-        PDF::write2DBarcode(route('createPDF', ['id' => $id]), 'QRCODE,L', 267, 5, 30, 30, $style, 'N');
+        PDF::write2DBarcode(route('createPDF', ['id' => $id]), 'QRCODE,L', 97, 225, 20, 20, $style, 'N');
         // save pdf PDF
 
-        PDF::Output('hello_world.pdf');
+        PDF::Output($data['teacher'][0]->name . ' Certificate.pdf');
     }
     public function teacher()
     {
@@ -93,7 +100,7 @@ class CertificateController extends Controller
         $teacher->name = $request->teachername;
         $teacher->dateofcertification = $request->teacherdoc;
         $teacher->coursename = $request->selectcourse;
-        $teacher->serialkey = $request->$new;
+        $teacher->serialkey = $new;
 
         $teacher->save();
 
@@ -108,6 +115,6 @@ class CertificateController extends Controller
         //     'serialkey' => substr(str_shuffle($permitted_chars), 0, 6),
         // );
         // DB::table('teachers')->insert($arr);
-        // return redirect()->route('teacher');
+        //return redirect()->route('teacher');
     }
 }

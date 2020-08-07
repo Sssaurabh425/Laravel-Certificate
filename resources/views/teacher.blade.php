@@ -19,8 +19,11 @@
             <div class="form-group">
               <label for="selectcourse">Select Course</label>
               <select class="form-control" name="selectcourse" id="selectcourse">
-                <option>Math</option>
-                <option>English</option>
+                <option>Smart Teacher Awareness Program</option>
+                <option>Smart Teacher Training - Beginner</option>
+                <option>Smart Teacher Training - Intermediate</option>
+                <option>Smart Teacher Training - Advanced</option>
+                <option>Smart Parent Training</option>
               </select>
             </div>
             <div class="form-group">
