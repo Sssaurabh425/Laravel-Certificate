@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TeacherRequest;
+use App\Http\Requests\CourseRequest;
 use App\Teacher;
 use App\Course;
 use DB;
@@ -17,7 +18,8 @@ class CertificateController extends Controller
     }
     public function index($id = 0)
     {
-        $data['teacher'] = Teacher::where('id', $id)->get();
+        $sid = decrypt($id);
+        $data['teacher'] = DB::table('teachers')->where('id', $sid)->get();
         $data['course'] = Course::where('id', $data['teacher'][0]->id)->get();
         //dd($data['course']);
         // set certificate file
@@ -103,9 +105,14 @@ class CertificateController extends Controller
     }
     public function teacher()
     {
-        $data['teacher'] = Teacher::all()->course();
+        $data['teacher'] = Teacher::all();
         $data['course'] = Course::all();
         return view('teacher')->with($data);
+    }
+    public function course()
+    {
+        $data['course'] = Course::all();
+        return view('course')->with($data);
     }
     public function saveteacher(TeacherRequest $request)
     {
@@ -121,16 +128,18 @@ class CertificateController extends Controller
         $teacher->save();
 
         return back();
-        // $data = $request->all();
-        //dd($data);
-        // $permitted_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        // $arr = array(
-        //     'name' => $data['teachername'],
-        //     'dateofcertification' => $data['teacherdoc'],
-        //     'coursename' => $data['selectcourse'],
-        //     'serialkey' => substr(str_shuffle($permitted_chars), 0, 6),
-        // );
-        // DB::table('teachers')->insert($arr);
-        //return redirect()->route('teacher');
+    }
+    public function savecourse(CourseRequest $request)
+    {
+        $course = new Course();
+        $course->name = $request->coursename;
+        $course->description = $request->coursedesc;
+        $course->aname = $request->aname;
+        $course->arole = $request->arole;
+        $course->asignature = $request->asignature;
+
+        $course->save();
+
+        return back();
     }
 }

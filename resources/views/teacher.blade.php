@@ -78,7 +78,7 @@
               <tr>
                 <td>{{$t->id}}</td>
                 <td>{{$t->name}}</td>
-                <td>{{$t->courseid}}</td>
+                <td>{{$t->course->name}}</td>
                 <td>{{$t->dateofcertification}}</td>
                 <td>{{$t->serialkey}}</td>
                 <td><a target="_blank" href="{{route('createPDF',encrypt(['id'=>$t->id]))}}">View</a></td>

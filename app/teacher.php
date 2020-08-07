@@ -11,6 +11,6 @@ class teacher extends Model
     ];
     public function course()
     {
-        return $this->hasOne('App\Course','id','courseid');
+        return $this->belongsTo(Course::class, 'courseid', 'id');
     }
 }
