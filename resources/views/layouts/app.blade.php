@@ -14,7 +14,7 @@
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    
+
 
     <!--script src="{{ asset('js/app.js') }}" defer></!--script-->
     <!-- Fonts -->
@@ -79,10 +79,31 @@
         </nav>
 
         <main class="py-4">
+            <div class="row">
+                <div class="col-md-12">
+                    @if(session('sucssucsMsg'))
+                    <div class="alert alert-success">
+                        {{session('sucssucsMsg')}}
+                    </div>
+                    @endif
+                    @if(session('error'))
+                    <div class="alert alert-danger">{{session('error')}}
+                    </div>
+                    @endif
+                    @if($errors->any())
+                    @foreach($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{$error}}
+                    </div>
+                    @endforeach
+                    @endif
+                    @yield('content')
+                </div>
+            </div>
             @yield('content')
         </main>
     </div>
-    
+
 </body>
 
 </html>
