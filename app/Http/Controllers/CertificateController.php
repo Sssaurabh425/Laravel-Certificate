@@ -17,7 +17,8 @@ class CertificateController extends Controller
     }
     public function index($id = 0)
     {
-        $data['teacher'] = Teacher::where('id', $id)->get();
+        $sid = decrypt($id);
+        $data['teacher'] = Teacher::where('id', $sid)->get();
         $data['course'] = Course::where('id', $data['teacher'][0]->id)->get();
         //dd($data['course']);
         // set certificate file
@@ -30,23 +31,18 @@ class CertificateController extends Controller
             'Reason' => 'Testing TCPDF',
             'ContactInfo' => 'http://www.tcpdf.org',
         );
-        if(strlen($data['teacher'][0]->name)<=16)
-        {
-            $fs='75px';
-            $y=115;
+        if (strlen($data['teacher'][0]->name) <= 16) {
+            $fs = '75px';
+            $y = 115;
+        } else if (strlen($data['teacher'][0]->name) > 16 && strlen($data['teacher'][0]->name) <= 22) {
+            $fs = '64px';
+            $y = 118;
+        } else {
+            $fs = '48px';
+            $y = 123;
         }
-        else if(strlen($data['teacher'][0]->name)>16 && strlen($data['teacher'][0]->name)<=22)
-        {
-            $fs='64px';
-            $y=118;
-        }
-        else
-        {
-            $fs='48px';
-            $y=123; 
-        }
-        
-        $html0 = '<div style="font-size:'.$fs.';font-family: EdwardianScriptITC;"><b>' . $data['teacher'][0]->name . '</b></div>';
+
+        $html0 = '<div style="font-size:' . $fs . ';font-family: EdwardianScriptITC;"><b>' . $data['teacher'][0]->name . '</b></div>';
         $html1 =  $data['course'][0]->description;
         $html4 =   '<div style="font-size:5px;">Scan To Verify</div>';
         $html5 =   '<div style="font-size:18px;text-align:center;">' . $data['teacher'][0]->dateofcertification . '</div>';
