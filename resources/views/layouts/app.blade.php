@@ -97,7 +97,7 @@
                     </div>
                     @endforeach
                     @endif
-                    @yield('content')
+
                 </div>
             </div>
             @yield('content')
