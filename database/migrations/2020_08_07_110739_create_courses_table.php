@@ -17,12 +17,12 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->default('<div style="font-size:22px;color:#777777;"><span>For actively participating in</span><br>
-            <span><b>"' + $data['teacher'][0]->coursename + '"</b> Conducted by</span>
+            <span><b></b> Conducted by</span>
             <br><span>Mr. Sandip Mitra representing e-Edport</span></div>');
             $table->string('aname')->default('Mr. Sandip Mitra');
             $table->string('arole')->default('Business consultant and advisor');
             $table->string('asignature')->default('image/signature.png');
-            $table->timestamps();   
+            $table->timestamps();
         });
     }
 

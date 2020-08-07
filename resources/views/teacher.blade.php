@@ -28,10 +28,10 @@
             <div class="form-group">
               <label for="selectcourse">Select Course</label>
               <select class="form-control" name="selectcourse" id="selectcourse">
-              <option value="">Select Course</option>
-              @foreach ($course as $c)
+                <option value="">Select Course</option>
+                @foreach ($course as $c)
                 <option value="{{$c->id}}">{{$c->name}}</option>
-              @endforeach
+                @endforeach
               </select>
             </div>
             <!--div class="form-group">
@@ -78,7 +78,7 @@
               <tr>
                 <td>{{$t->id}}</td>
                 <td>{{$t->name}}</td>
-                <td>{{$t->courseid}}</td>
+                <td>{{$t->course->name}}</td>
                 <td>{{$t->dateofcertification}}</td>
                 <td>{{$t->serialkey}}</td>
                 <td><a target="_blank" href="{{route('createPDF',encrypt(['id'=>$t->id]))}}">View</a></td>

@@ -99,34 +99,23 @@ class CertificateController extends Controller
     }
     public function teacher()
     {
-        $data['teacher'] = Teacher::all()->course();
+        $data['teacher'] = Teacher::all();
         $data['course'] = Course::all();
         return view('teacher')->with($data);
     }
     public function saveteacher(TeacherRequest $request)
     {
         $permitted_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $new = substr(str_shuffle($permitted_chars), 0, 6);
+
 
         $teacher = new Teacher();
         $teacher->name = $request->teachername;
         $teacher->dateofcertification = $request->teacherdoc;
         $teacher->courseid = $request->selectcourse;
-        $teacher->serialkey = $new;
+        $teacher->serialkey = substr(str_shuffle($permitted_chars), 0, 6);
 
         $teacher->save();
 
         return back();
-        // $data = $request->all();
-        //dd($data);
-        // $permitted_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        // $arr = array(
-        //     'name' => $data['teachername'],
-        //     'dateofcertification' => $data['teacherdoc'],
-        //     'coursename' => $data['selectcourse'],
-        //     'serialkey' => substr(str_shuffle($permitted_chars), 0, 6),
-        // );
-        // DB::table('teachers')->insert($arr);
-        //return redirect()->route('teacher');
     }
 }
