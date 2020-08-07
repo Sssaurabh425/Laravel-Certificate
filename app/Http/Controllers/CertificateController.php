@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TeacherRequest;
+use App\Http\Requests\CourseRequest;
 use App\Teacher;
 use App\Course;
 use DB;
@@ -18,7 +19,7 @@ class CertificateController extends Controller
     public function index($id = 0)
     {
         $sid = decrypt($id);
-        $data['teacher'] = Teacher::where('id', $sid)->get();
+        $data['teacher'] = DB::table('teachers')->where('id', $sid)->get();
         $data['course'] = Course::where('id', $data['teacher'][0]->id)->get();
         //dd($data['course']);
         // set certificate file
@@ -103,6 +104,11 @@ class CertificateController extends Controller
         $data['course'] = Course::all();
         return view('teacher')->with($data);
     }
+    public function course()
+    {
+        $data['course'] = Course::all();
+        return view('course')->with($data);
+    }
     public function saveteacher(TeacherRequest $request)
     {
         $permitted_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -115,6 +121,19 @@ class CertificateController extends Controller
         $teacher->serialkey = substr(str_shuffle($permitted_chars), 0, 6);
 
         $teacher->save();
+
+        return back();
+    }
+    public function savecourse(CourseRequest $request)
+    {
+        $course = new Course();
+        $course->name = $request->coursename;
+        $course->description = $request->coursedesc;
+        $course->aname = $request->aname;
+        $course->arole = $request->arole;
+        $course->asignature = $request->asignature;
+
+        $course->save();
 
         return back();
     }
