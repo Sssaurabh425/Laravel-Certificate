@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
               <label for="coursedesc">Select Course</label>
-              <textarea class="form-control" id="coursedesc" name="coursedesc" rows="4"></textarea>
+              <textarea class="form-control" id="coursedesc" name="coursedesc" rows="4"><div style="font-size:22px;color:#777777;"><span>For actively participating in</span><br><span><b>" Teacher Webinar "</b> Conducted by</span> <br><span>Mr. Sandip Mitra representing e-Edport</span></div></textarea>
             </div>
             <div class="form-group">
               <label for="aname">Anchor Name</label>
