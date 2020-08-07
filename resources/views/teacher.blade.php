@@ -28,13 +28,22 @@
             <div class="form-group">
               <label for="selectcourse">Select Course</label>
               <select class="form-control" name="selectcourse" id="selectcourse">
+              <option value="">Select Course</option>
+              @foreach ($course as $c)
+                <option value="{{$c->id}}">{{$c->name}}</option>
+              @endforeach
+              </select>
+            </div>
+            <!--div class="form-group">
+              <label for="selectcourse">Select Course</label>
+              <select class="form-control" name="selectcourse" id="selectcourse">
                 <option>Smart Teacher Awareness Program</option>
                 <option>Smart Teacher Training - Beginner</option>
                 <option>Smart Teacher Training - Intermediate</option>
                 <option>Smart Teacher Training - Advanced</option>
                 <option>Smart Parent Training</option>
               </select>
-            </div>
+            </!--div-->
             <div class="form-group">
               <label for="teacherdoc">Date of Certification</label>
               <input type="date" class="form-control" id="teacherdoc" placeholder="Enter Teacher DOB" name="teacherdoc">
@@ -69,7 +78,7 @@
               <tr>
                 <td>{{$t->id}}</td>
                 <td>{{$t->name}}</td>
-                <td>{{$t->coursename}}</td>
+                <td>{{$t->courseid}}</td>
                 <td>{{$t->dateofcertification}}</td>
                 <td>{{$t->serialkey}}</td>
                 <td><a target="_blank" href="{{route('createPDF',encrypt(['id'=>$t->id]))}}">View</a></td>
