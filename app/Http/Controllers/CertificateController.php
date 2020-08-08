@@ -6,8 +6,8 @@ use App\Http\Requests\TeacherRequest;
 use App\Http\Requests\CourseRequest;
 use App\Teacher;
 use App\Course;
-use DB;
 use PDF;
+use Session;
 use Illuminate\Http\Request;
 
 class CertificateController extends Controller
@@ -121,7 +121,8 @@ class CertificateController extends Controller
         $teacher->serialkey = $new;
 
         $teacher->save();
-
+        Session::flash('flash_message', 'Well done! You successfully Added the Teacher');
+        Session::flash('flash_type', 'success');
         return back();
     }
     public function savecourse(CourseRequest $request)
@@ -144,6 +145,8 @@ class CertificateController extends Controller
 
         $course->save();
 
+        Session::flash('flash_message', 'Well done! You successfully Added the Course');
+        Session::flash('flash_type', 'success');
         return back();
     }
     public function updatecourse(Request $request)
@@ -153,7 +156,7 @@ class CertificateController extends Controller
         $shtname = time() . rand(0, 9);
         $fileName = $shtname . '.' . $extension;
         if (trim($fileName) != "") {
-            $destinationPath = 'images/signature'; // upload path
+            $destinationPath = 'image/signature'; // upload path
             $image->move($destinationPath, $fileName);
         }
         $course = Course::find($request->ecourseid);
@@ -166,6 +169,8 @@ class CertificateController extends Controller
 
         $course->save();
 
+        Session::flash('flash_message', 'Well done! You successfully Update the Course');
+        Session::flash('flash_type', 'success');
         return back();
     }
     public function getcourse(Request $request)

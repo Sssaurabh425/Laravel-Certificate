@@ -10,10 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,6 +17,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <!-- Scripts -->
+    <!--script type="text/javascript" src="{{ asset('js/app.js') }}" defer></!--script-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+    <script type="text/javascript" src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+    <!-- Toastr -->
+    <script type="text/javascript" src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
 </head>
 
 <body>
@@ -79,6 +88,41 @@
             </div>
         </nav>
 
+
+
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <script type="text/javascript">
+            toastr.error('{{$error}}')
+        </script>
+        @endforeach
+        @endif
+
+        @if ( Session::has('flash_message') )
+        <script type="text/javascript">
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                timer: 3000,
+                padding: '1em',
+                showConfirmButton: false,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+
+            Toast.fire({
+                icon: "{{ Session::get('flash_type') }}",
+                title: "<h6><b>{{ Session::get('flash_message') }}</b></h6>"
+            })
+        </script>
+        @endif
+
+
+
         <main class="py-4">
             <div class="row">
                 <div class="col-md-12">
@@ -90,13 +134,6 @@
                     @if(session('error'))
                     <div class="alert alert-danger">{{session('error')}}
                     </div>
-                    @endif
-                    @if($errors->any())
-                    @foreach($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{$error}}
-                    </div>
-                    @endforeach
                     @endif
 
                 </div>
