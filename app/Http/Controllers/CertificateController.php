@@ -19,8 +19,8 @@ class CertificateController extends Controller
     public function index($id = 0)
     {
         $sid = decrypt($id);
-        $data['teacher'] = DB::table('teachers')->where('id', $sid)->get();
-        $data['course'] = Course::where('id', $data['teacher'][0]->id)->get();
+        $data['teacher'] = Teacher::where('id', $sid)->get();
+        $data['course'] = Course::where('id', $data['teacher'][0]->courseid)->get();
         //dd($data['course']);
         // set certificate file
         $certificate = 'file://' . base_path() . '/public/certificate/tcpdf.crt';
@@ -32,23 +32,18 @@ class CertificateController extends Controller
             'Reason' => 'Testing TCPDF',
             'ContactInfo' => 'http://www.tcpdf.org',
         );
-        if(strlen($data['teacher'][0]->name)<=16)
-        {
-            $fs='75px';
-            $y=115;
+        if (strlen($data['teacher'][0]->name) <= 16) {
+            $fs = '75px';
+            $y = 115;
+        } else if (strlen($data['teacher'][0]->name) > 16 && strlen($data['teacher'][0]->name) <= 22) {
+            $fs = '64px';
+            $y = 118;
+        } else {
+            $fs = '48px';
+            $y = 123;
         }
-        else if(strlen($data['teacher'][0]->name)>16 && strlen($data['teacher'][0]->name)<=22)
-        {
-            $fs='64px';
-            $y=118;
-        }
-        else
-        {
-            $fs='48px';
-            $y=123; 
-        }
-        
-        $html0 = '<div style="font-size:'.$fs.';font-family: EdwardianScriptITC;"><b>' . $data['teacher'][0]->name . '</b></div>';
+
+        $html0 = '<div style="font-size:' . $fs . ';font-family: EdwardianScriptITC;"><b>' . $data['teacher'][0]->name . '</b></div>';
         $html1 =  $data['course'][0]->description;
         $html4 =   '<div style="font-size:5px;">Scan To Verify</div>';
         $html5 =   '<div style="font-size:18px;text-align:center;">' . $data['teacher'][0]->dateofcertification . '</div>';
@@ -131,15 +126,59 @@ class CertificateController extends Controller
     }
     public function savecourse(CourseRequest $request)
     {
+        $image = $request->asignature;
+        $extension = $image->getClientOriginalExtension();
+        $shtname = time() . rand(0, 9);
+        $fileName = $shtname . '.' . $extension;
+        if (trim($fileName) != "") {
+            $destinationPath = 'images/signature'; // upload path
+            $image->move($destinationPath, $fileName);
+        }
         $course = new Course();
         $course->name = $request->coursename;
         $course->description = $request->coursedesc;
         $course->aname = $request->aname;
         $course->arole = $request->arole;
-        $course->asignature = $request->asignature;
+        $course->asignature = $destinationPath . "/" . $fileName;
+
 
         $course->save();
 
         return back();
+    }
+    public function updatecourse(Request $request)
+    {
+        $image = $request->easignature;
+        $extension = $image->getClientOriginalExtension();
+        $shtname = time() . rand(0, 9);
+        $fileName = $shtname . '.' . $extension;
+        if (trim($fileName) != "") {
+            $destinationPath = 'images/signature'; // upload path
+            $image->move($destinationPath, $fileName);
+        }
+        $course = Course::find($request->ecourseid);
+        $course->name = $request->ecoursename;
+        $course->description = $request->ecoursedesc;
+        $course->aname = $request->eaname;
+        $course->arole = $request->earole;
+        $course->asignature = $destinationPath . "/" . $fileName;
+
+
+        $course->save();
+
+        return back();
+    }
+    public function getcourse(Request $request)
+    {
+        $course_id = $request->course_id;
+        $results = Course::where('id', $course_id)->get();
+        //dd($results);
+
+        if ($results) {
+            echo json_encode($results[0]);
+            exit;
+        } else {
+            return false;
+        }
     }
 }
