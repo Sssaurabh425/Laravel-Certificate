@@ -9,6 +9,7 @@ use App\Course;
 use PDF;
 use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CertificateController extends Controller
 {
@@ -121,6 +122,11 @@ class CertificateController extends Controller
         $teacher->serialkey = substr(str_shuffle($permitted_chars), 0, 6);
 
         $teacher->save();
+        $details = [
+            'title' => 'Mail from ItSolutionStuff.com',
+            'body' => 'This is for testing email using smtp'
+        ];
+        Mail::to('vs4110690@gmail.com')->send(new \App\Mail\Sendemail($details));
         Session::flash('flash_message', 'Well done! You successfully Added the Teacher');
         Session::flash('flash_type', 'success');
         return back();
