@@ -21,11 +21,14 @@ Route::post('/saveteacher', 'CertificateController@saveteacher')->name('saveteac
 Route::post('/savecourse', 'CertificateController@savecourse')->name('savecourse');
 Route::post('/updatecourse', 'CertificateController@updatecourse')->name('updatecourse');
 Route::get('/course', 'CertificateController@course')->name('course');
-Route::post('/getcourse','CertificateController@getcourse')->name('getcourse');
+Route::post('/getcourse', 'CertificateController@getcourse')->name('getcourse');
+Auth::routes();
+
+
+
 Auth::routes();
 
 Route::get('/home', 'CertificateController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'CertificateController@index')->name('home');
+Route::get('/', function () {
+    return view('welcome');
+})->name('');
