@@ -113,21 +113,27 @@ class CertificateController extends Controller
     public function saveteacher(TeacherRequest $request)
     {
         $permitted_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
+        $rdstring = substr(str_shuffle($permitted_chars), 0, 6);
 
         $teacher = new Teacher();
         $teacher->name = $request->teachername;
+        $teacher->email = $request->teacheremail;
         $teacher->dateofcertification = $request->teacherdoc;
         $teacher->courseid = $request->selectcourse;
-        $teacher->serialkey = substr(str_shuffle($permitted_chars), 0, 6);
+        $teacher->serialkey = $rdstring;
 
         $teacher->save();
+        $data['teacher'] = Teacher::where('serialkey', $rdstring)->get();
+        //dd($data['teacher'][0]->id);
         $details = [
-            'title' => 'Mail from ItSolutionStuff.com',
-            'body' => 'This is for testing email using smtp'
+            'id' => $data['teacher'][0]->id,
+            'password' => $rdstring,
+            'name' => $request->teachername,
+            'title' => 'Mail from E-edport.com',
+            'body' => 'You have successfully completed your Course. Please find the Link and Password for the Certificate'
         ];
-        Mail::to('vs4110690@gmail.com')->send(new \App\Mail\Sendemail($details));
-        Session::flash('flash_message', 'Well done! You successfully Added the Teacher');
+        Mail::to($request->teacheremail)->send(new \App\Mail\Sendemail($details));
+        Session::flash('flash_message', 'Well done! You successfully Added the Teacher Certificate');
         Session::flash('flash_type', 'success');
         return back();
     }

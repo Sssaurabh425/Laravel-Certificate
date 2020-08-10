@@ -25,6 +25,7 @@ class TeacherRequest extends FormRequest
     {
         return [
             'teachername' => 'min:5|max:255|required|regex:/^[a-zA-Z ]*$/',
+            'teacheremail' => 'required|email',
             'teacherdoc' => 'required',
             'selectcourse' => 'required',
 

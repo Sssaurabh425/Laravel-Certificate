@@ -26,6 +26,10 @@
               <input type="text" class="form-control" id="teachername" placeholder="Enter Teacher Name" name="teachername">
             </div>
             <div class="form-group">
+              <label for="teachername">Teacher Email</label>
+              <input type="email" class="form-control" id="teacheremail" placeholder="Enter Teacher Email" name="teacheremail">
+            </div>
+            <div class="form-group">
               <label for="selectcourse">Select Course</label>
               <select class="form-control" name="selectcourse" id="selectcourse">
                 <option value="">Select Course</option>
@@ -67,6 +71,7 @@
               <tr>
                 <th>#</th>
                 <th>Name</th>
+                <th>Email</th>
                 <th>Course Name</th>
                 <th>Certification Date</th>
                 <th>Serial Key</th>
@@ -78,6 +83,7 @@
               <tr>
                 <td>{{$t->id}}</td>
                 <td>{{$t->name}}</td>
+                <td>{{$t->email}}</td>
                 <td>{{$t->course->name}}</td>
                 <td>{{$t->dateofcertification}}</td>
                 <td>{{$t->serialkey}}</td>
@@ -124,6 +130,10 @@ $(document).ready(function () {
         required: true,
         minlength: 5
       },
+      teacheremail: {
+        required: true,
+        email: true
+      },
       selectcourse: {
         required: true
       },
@@ -135,6 +145,10 @@ $(document).ready(function () {
       teachername: {
         required: "Enter Teacher Name",
         minlength: "Please, at least {0} characters are necessary"
+      },
+      teachername: {
+        required: "Enter Teacher Email",
+        email: "Please, Enter Valid Email"
       },
       selectcourse: {
         required: "Select Course"

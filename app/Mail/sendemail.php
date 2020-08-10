@@ -28,7 +28,7 @@ class sendemail extends Mailable
      */
     public function build()
     {
-        return $this->subject('vikram singh')
+        return $this->subject('Teacher Certificate')
             ->view('emailsend');
     }
 }
