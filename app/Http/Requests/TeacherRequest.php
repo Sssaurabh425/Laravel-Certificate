@@ -24,7 +24,7 @@ class TeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            'teachername' => 'min:5|max:255|required',
+            'teachername' => 'min:5|max:255|required|regex:/^[a-zA-Z ]*$/',
             'teacherdoc' => 'required',
             'selectcourse' => 'required',
 
