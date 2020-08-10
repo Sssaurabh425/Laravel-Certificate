@@ -146,7 +146,7 @@ $(document).ready(function () {
         required: "Enter Teacher Name",
         minlength: "Please, at least {0} characters are necessary"
       },
-      teachername: {
+      teacheremail: {
         required: "Enter Teacher Email",
         email: "Please, Enter Valid Email"
       },

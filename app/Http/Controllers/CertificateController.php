@@ -84,9 +84,9 @@ class CertificateController extends Controller
         // define active area for signature appearance
         PDF::setSignatureAppearance(140, 200, 35, 15);
         $style = array(
-            'border' => 0,
-            'vpadding' => 0,
-            'hpadding' => 0,
+            'border' => 1,
+            'vpadding' => 'auto',
+            'hpadding' => 'auto',
             'fgcolor' => array(0, 0, 0),
             'bgcolor' => false, //array(255,255,255)
             'module_width' => 1, // width of a single module in points
@@ -94,7 +94,7 @@ class CertificateController extends Controller
         );
 
         // QRCODE,L : QR-CODE Low error correction
-        PDF::write2DBarcode(route('createPDF', ['id' => $id]), 'QRCODE,L', 94, 230, 25, 25, $style, 'N');
+        PDF::write2DBarcode(route('createPDF', ['id' => $id]), 'QRCODE,L', 95, 230, 24, 24, $style, 'N');
         // save pdf PDF
 
         PDF::Output($data['teacher'][0]->name . ' Certificate.pdf');
@@ -144,7 +144,7 @@ class CertificateController extends Controller
         $shtname = time() . rand(0, 9);
         $fileName = $shtname . '.' . $extension;
         if (trim($fileName) != "") {
-            $destinationPath = 'images/signature'; // upload path
+            $destinationPath = 'image/signature'; // upload path
             $image->move($destinationPath, $fileName);
         }
         $course = new Course();
