@@ -19,8 +19,9 @@ Route::get('/tcpdf/{id?}', 'CertificateController@index')->name('createPDF');
 Route::get('/teacher', 'CertificateController@teacher')->name('teacher');
 Route::post('/saveteacher', 'CertificateController@saveteacher')->name('saveteacher');
 Route::post('/savecourse', 'CertificateController@savecourse')->name('savecourse');
+Route::post('/updatecourse', 'CertificateController@updatecourse')->name('updatecourse');
 Route::get('/course', 'CertificateController@course')->name('course');
-
+Route::post('/getcourse','CertificateController@getcourse')->name('getcourse');
 Auth::routes();
 
 Route::get('/home', 'CertificateController@index')->name('home');
