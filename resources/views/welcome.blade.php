@@ -29,7 +29,7 @@
                 <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
                 <h2>Welcome</h2>
                 <h4>You are 30 seconds away from earning your own money!</h4>
-                <a href="{{ route('login') }}"><input type="button" name="" value="Login" /></a><br />
+                <a href="{{ route('login') }}"><input type="button" class="btn btn-primary" name="" value="Login" /></a><br />
             </div>
             <div class="col-md-9 register-right">
                 <div class="col-md-9 m-auto text-center">

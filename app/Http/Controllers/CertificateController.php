@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CertificateRequest;
 use App\Http\Requests\CourseRequest;
-use App\Teacher;
+use App\Certificate;
 use App\Course;
 use PDF;
 use Session;
@@ -20,8 +20,8 @@ class CertificateController extends Controller
     public function index($id = 0)
     {
         $sid = decrypt($id);
-        $data['teacher'] = Teacher::where('id', $sid)->get();
-        $data['course'] = Course::where('id', $data['teacher'][0]->courseid)->get();
+        $data['certificate'] = Certificate::where('id', $sid)->get();
+        $data['course'] = Course::where('id', $data['certificate'][0]->courseid)->get();
         //dd($data['course']);
         // set certificate file
         $certificate = 'file://' . base_path() . '/public/certificate/tcpdf.crt';
@@ -33,10 +33,10 @@ class CertificateController extends Controller
             'Reason' => 'Testing TCPDF',
             'ContactInfo' => 'http://www.tcpdf.org',
         );
-        if (strlen($data['teacher'][0]->name) <= 16) {
+        if (strlen($data['certificate'][0]->name) <= 16) {
             $fs = '75px';
             $y = 115;
-        } else if (strlen($data['teacher'][0]->name) > 16 && strlen($data['teacher'][0]->name) <= 22) {
+        } else if (strlen($data['certificate'][0]->name) > 16 && strlen($data['certificate'][0]->name) <= 22) {
             $fs = '64px';
             $y = 118;
         } else {
@@ -44,20 +44,20 @@ class CertificateController extends Controller
             $y = 123;
         }
 
-        $html0 = '<div style="font-size:' . $fs . ';font-family: EdwardianScriptITC;"><b>' . $data['teacher'][0]->name . '</b></div>';
+        $html0 = '<div style="font-size:' . $fs . ';font-family: EdwardianScriptITC;"><b>' . $data['certificate'][0]->name . '</b></div>';
         $html1 =  $data['course'][0]->description;
         $html4 =   '<div style="font-size:5px;">Scan To Verify</div>';
-        $html5 =   '<div style="font-size:18px;text-align:center;">' . $data['teacher'][0]->dateofcertification . '</div>';
+        $html5 =   '<div style="font-size:18px;text-align:center;">' . $data['certificate'][0]->dateofcertification . '</div>';
         $html6 =   '<div style="font-size:15px;text-align:center;"><b>Date</b></div>';
         $html7 =   '<div style="font-size:15px;text-align:center;"><b>' . $data['course'][0]->aname . '</b></div>';
         $html8 =   '<div style="font-size:10px;text-align:center;">(' . $data['course'][0]->arole . ')</div>';
-        PDF::SetProtection(array('copy', 'modify'), $data['teacher'][0]->serialkey, "ourcodeworld-master", 0, null);
+        PDF::SetProtection(array('copy', 'modify'), $data['certificate'][0]->serialkey, "ourcodeworld-master", 0, null);
 
         // set document signature
         PDF::setSignature($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
 
         PDF::SetFont('helvetica', '', 12);
-        PDF::SetTitle($data['teacher'][0]->name . ' Certificate');
+        PDF::SetTitle($data['certificate'][0]->name . ' Certificate');
         PDF::AddPage();
         // set style for barcode
 
@@ -97,36 +97,36 @@ class CertificateController extends Controller
         PDF::write2DBarcode(route('createPDF', ['id' => $id]), 'QRCODE,L', 95, 230, 24, 24, $style, 'N');
         // save pdf PDF
 
-        PDF::Output($data['teacher'][0]->name . ' Certificate.pdf');
+        PDF::Output($data['certificate'][0]->name . ' Certificate.pdf');
     }
-    public function teacher()
+    public function certificates()
     {
-        $data['teacher'] = Teacher::all();
+        $data['certificate'] = Certificate::all();
         $data['course'] = Course::all();
-        return view('teacher')->with($data);
+        return view('certificate')->with($data);
     }
     public function course()
     {
         $data['course'] = Course::all();
         return view('course')->with($data);
     }
-    public function saveteacher(CertificateRequest $request)
+    public function savecertificate(CertificateRequest $request)
     {
         $permitted_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $rdstring = substr(str_shuffle($permitted_chars), 0, 6);
 
-        $teacher = new Teacher();
-        $teacher->name = $request->teachername;
-        $teacher->email = $request->teacheremail;
-        $teacher->dateofcertification = $request->teacherdoc;
-        $teacher->courseid = $request->selectcourse;
-        $teacher->serialkey = $rdstring;
+        $certificate = new Certificate();
+        $certificate->name = $request->teachername;
+        $certificate->email = $request->teacheremail;
+        $certificate->dateofcertification = $request->teacherdoc;
+        $certificate->courseid = $request->selectcourse;
+        $certificate->serialkey = $rdstring;
 
-        $teacher->save();
-        $data['teacher'] = Teacher::where('serialkey', $rdstring)->get();
-        //dd($data['teacher'][0]->id);
+        $certificate->save();
+        $data['certificate'] = Certificate::where('serialkey', $rdstring)->get();
+        //dd($data['certificate'][0]->id);
         $details = [
-            'id' => $data['teacher'][0]->id,
+            'id' => $data['certificate'][0]->id,
             'password' => $rdstring,
             'name' => $request->teachername,
             'title' => 'Mail from E-edport.com',

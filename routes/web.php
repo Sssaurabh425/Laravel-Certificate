@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/tcpdf/{id?}', 'CertificateController@index')->name('createPDF');
-Route::get('/teacher', 'CertificateController@teacher')->name('teacher');
-Route::post('/saveteacher', 'CertificateController@saveteacher')->name('saveteacher');
+Route::get('/certificates', 'CertificateController@certificates')->name('certificate');
+Route::post('/savecertificate', 'CertificateController@savecertificate')->name('savecertificate');
 Route::post('/savecourse', 'CertificateController@savecourse')->name('savecourse');
 Route::post('/updatecourse', 'CertificateController@updatecourse')->name('updatecourse');
 Route::get('/course', 'CertificateController@course')->name('course');

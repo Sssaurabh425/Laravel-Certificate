@@ -36,7 +36,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('teacher') }}">
+                <a class="navbar-brand" href="{{ route('certificate') }}">
                     {{ config('app.name', 'Certificate') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -60,7 +60,7 @@
 
                         @else
                         <li class="nav-item mr-5 ">
-                            <a class="nav-link" href="{{ route('teacher') }}">Home </a>
+                            <a class="nav-link" href="{{ route('certificate') }}">Home </a>
                         </li>
                         <li class="nav-item mr-5 ">
                             <a class="nav-link" href="{{ route('course') }}">Add Course Detail</a>

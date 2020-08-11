@@ -27,9 +27,7 @@ class TeacherRequest extends FormRequest
             'teachername' => 'min:5|max:255|required|regex:/^[a-zA-Z ]*$/',
             'teacheremail' => 'required|email',
             'mobileno' => 'required',
-            'selectlevel' => 'required',
-            /*'teacherdoc' => 'required',
-            'selectcourse' => 'required',*/
+            'selectlevel' => 'required'
 
         ];
     }

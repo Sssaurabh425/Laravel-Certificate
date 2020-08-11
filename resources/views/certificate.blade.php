@@ -19,7 +19,7 @@
           Add Certificate
         </div>
         <div class="card-body">
-          <form role="form" id="saveteacher" method="post" action="{{route('saveteacher')}}">
+          <form role="form" id="saveteacher" method="post" action="{{route('savecertificate')}}">
             @csrf
             <div class="form-group">
               <label for="teachername">Teacher Name</label>
@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="col-md-12 mt-5">
-      @if(count($teacher) > 0 ) <div class="card">
+      @if(count($certificate) > 0 ) <div class="card">
         <div class="card-header">
           All Certificate
         </div>
@@ -79,7 +79,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($teacher as $t)
+              @foreach($certificate as $t)
               <tr>
                 <td>{{$t->id}}</td>
                 <td>{{$t->name}}</td>
