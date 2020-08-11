@@ -32,3 +32,4 @@ Route::get('/home', 'CertificateController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 })->name('');
+Route::post('/registerteacher', 'TeacherController@registerteacher')->name('registerteacher');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TeacherRequest;
+use App\Http\Requests\CertificateRequest;
 use App\Http\Requests\CourseRequest;
 use App\Teacher;
 use App\Course;
@@ -110,7 +110,7 @@ class CertificateController extends Controller
         $data['course'] = Course::all();
         return view('course')->with($data);
     }
-    public function saveteacher(TeacherRequest $request)
+    public function saveteacher(CertificateRequest $request)
     {
         $permitted_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $rdstring = substr(str_shuffle($permitted_chars), 0, 6);

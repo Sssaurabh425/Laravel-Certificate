@@ -1,6 +1,8 @@
 .form-control{
-    padding: 1.5rem 1rem;
+    height:calc(2em + .8rem + 2px);
     border-radius:10px;
+    font-size: 1rem;
+    font-weight: 600;
 }
 .register{
     padding: 3%;
