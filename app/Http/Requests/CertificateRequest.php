@@ -25,9 +25,20 @@ class CertificateRequest extends FormRequest
     {
         return [
             'teachername' => 'min:5|max:255|required|regex:/^[a-zA-Z ]*$/',
-            'teacheremail' => 'required|email',
+            'teacheremail' => 'required|email|unique:Certificates,email',
             'teacherdoc' => 'required',
             'selectcourse' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+
+            'teachername.regex' => 'The name of your business is required',
+            'teachername.max' => 'Maxima 255 character ',
+            'teacheremail.email' => 'Please enter a valid email address',
+            'teacheremail.unique' => 'The email ID you entered already exist',
+
         ];
     }
 }

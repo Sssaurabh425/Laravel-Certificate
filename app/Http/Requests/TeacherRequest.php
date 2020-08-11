@@ -25,9 +25,22 @@ class TeacherRequest extends FormRequest
     {
         return [
             'teachername' => 'min:5|max:255|required|regex:/^[a-zA-Z ]*$/',
-            'teacheremail' => 'required|email',
-            'mobileno' => 'required',
+            'teacheremail' => 'required|unique:teachers,email|email',
+            'mobileno' => 'required|unique:teachers|regex:/^[0-9]+$/|min:10|max:12',
             'selectlevel' => 'required'
+
+        ];
+    }
+    public function messages()
+    {
+        return [
+
+            'teachername.max' => 'The name of maxima 255 charter',
+            'teachername.regex' => 'Enter text not other',
+            'mobileno.unique' => 'The mobile number is already registered',
+            'mobileno.regex' => 'enter validate number',
+            'teacheremail.email' => 'Please enter a valid email address',
+            'teacheremail.unique' => 'The email ID you entered already exist',
 
         ];
     }

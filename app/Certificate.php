@@ -8,7 +8,7 @@ class Certificate extends Model
 {
     //
     protected $fillable = [
-        'name',  'dateofcertification', 'courseid', 'serialkey',
+        'name',  'dateofcertification', 'courseid', 'serialkey', 'email',
     ];
     public function course()
     {
