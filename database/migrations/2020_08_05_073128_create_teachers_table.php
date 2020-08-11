@@ -19,9 +19,9 @@ class CreateTeachersTable extends Migration
             $table->string('email');
             $table->string('mobileno');
             $table->string('certificationlevel');
-            $table->integer('courseid');
-            $table->string('dateofcertification');
-            $table->string('serialkey');
+            $table->integer('courseid')->nullable();
+            $table->string('dateofcertification')->nullable();
+            $table->string('serialkey')->nullable();
             $table->timestamps();
         });
     }
