@@ -35,8 +35,8 @@ class TeacherRequest extends FormRequest
     {
         return [
 
-            'teachername.max' => 'The name of maxima 255 charter',
-            'teachername.regex' => 'Enter text not other',
+            'teachername.max' => 'Maximum 255 character Allowed',
+            'teachername.regex' => 'Please Enter the Teacher Name',
             'mobileno.unique' => 'The mobile number is already registered',
             'mobileno.regex' => 'enter validate number',
             'teacheremail.email' => 'Please enter a valid email address',

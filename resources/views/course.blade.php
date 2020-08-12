@@ -152,15 +152,11 @@
 <!-- ./Dashboard-NoticeModal-->
 
 </div>
+
+<script type="text/javascript" src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
 <script>
   $(document).ready(function() {
     $('#example').DataTable();
-  });
-</script>
-<script type="text/javascript" src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.ckeditor').ckeditor();
   });
 </script>
 <script type="text/javascript">
@@ -177,7 +173,7 @@ $(document).ready(function () {
         minlength: 5
       },
       ecoursedesc: {
-        required: true
+        required: true,
       },
       eaname: {
         required: true,

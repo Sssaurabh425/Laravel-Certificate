@@ -34,8 +34,8 @@ class CertificateRequest extends FormRequest
     {
         return [
 
-            'teachername.regex' => 'The name of your business is required',
-            'teachername.max' => 'Maxima 255 character ',
+            'teachername.regex' => 'Please Enter Teacher Names',
+            'teachername.max' => 'Maximum 255 character ',
             'teacheremail.email' => 'Please enter a valid email address',
             'teacheremail.unique' => 'The email ID you entered already exist',
 
