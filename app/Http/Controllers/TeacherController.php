@@ -16,11 +16,18 @@ class TeacherController extends Controller
         $teacher->name = $request->teachername;
         $teacher->email = $request->teacheremail;
         $teacher->mobileno = $request->mobileno;
+        $teacher->entity = $request->entityvalue;
         $teacher->certificationlevel = $request->selectlevel;
         $teacher->save();
         //dd($data['teacher'][0]->id);
         Session::flash('flash_message', 'Well done! You successfully Added the Teacher');
         Session::flash('flash_type', 'success');
         return back();
+    }
+    public function teachers()
+    {
+
+        $data['teacher'] = Teacher::all();
+        return view('teacher')->with($data);
     }
 }

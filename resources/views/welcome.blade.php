@@ -28,15 +28,28 @@
             <div class="col-md-3 register-left">
                 <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
                 <h2>Welcome</h2>
-                <h4>You are 30 seconds away from earning your own money!</h4>
+                <h4>You are one step away from becoming a smart teacher!</h4>
                 <a href="{{ route('login') }}"><input type="button" class="btn btn-primary" name="" value="Login" /></a><br />
+
             </div>
             <div class="col-md-9 register-right">
-                <div class="col-md-9 m-auto text-center">
+                <div>
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active entity" data-value="Individual" data-toggle="tab" href="#">Individual</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link entity" data-value="Institutional" data-toggle="tab" href="#">Institutional</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="m-auto text-center">
                     <div class="tab-content" id="myTabContent">
+
+
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <h3 class="register-heading"><b>Apply For Certificate</b></h3>
-                            <div class="row register-form">
+                            <div class="row register-form" style="width:100%;">
                                 <div class="col-md-12">
                                     <form role="form" id="saveteacher" method="post" action="{{route('registerteacher')}}">
                                         <div class="form-group">
@@ -48,6 +61,7 @@
                                         <div class="form-group">
                                             <input type="text" id="mobileno" name="mobileno" class="form-control" placeholder="Phone Number *" value="" />
                                         </div>
+                                        <input type="hidden" id="entityvalue" name="entityvalue" value="Individual" />
                                         <div class="form-group">
                                             <select class="form-control" name="selectlevel" id="selectlevel">
                                                 <option value="" selected>Select Certification Level</option>
@@ -63,12 +77,14 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         <script type="text/javascript">
-            toastr.error('{{$error}}')
+            toastr.error('{{$error}}');
         </script>
         @endforeach
         @endif
@@ -92,7 +108,7 @@
             Toast.fire({
                 icon: "{{ Session::get('flash_type') }}",
                 title: "<h6><b>{{ Session::get('flash_message') }}</b></h6>"
-            })
+            });
         </script>
         @endif
     </div>
@@ -130,10 +146,10 @@
                         email: "Please, Enter Valid Email"
                     },
                     mobileno: {
-                        required: "Select Course"
+                        required: "Enter Phone No."
                     },
                     selectlevel: {
-                        required: "Select Date Of Certification"
+                        required: "Select Level Of Certification"
                     }
                 },
                 errorElement: 'span',
@@ -150,6 +166,12 @@
             });
         });
     </script>
+    <script type="text/javascript">
+  $('body').on('click', '.entity', function(event) {
+    var entity_value = $(this).attr('data-value');
+    $('#entityvalue').val(entity_value);
+  });
+  </script>
 </body>
 
 </html>
