@@ -18,6 +18,7 @@ class CreateTeachersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('mobileno');
+            $table->string('entity');
             $table->string('certificationlevel');
             $table->timestamps();
         });
