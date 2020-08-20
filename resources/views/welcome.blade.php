@@ -279,10 +279,10 @@
                     <div class="portfolio-menu pt-30 text-center">
                         <ul>
                             <!-- <li data-filter="*" class="active">ALL WORK</li> -->
-                            <li onclick="showhide()" data-filter=".virtual-school" class="active">Virtual Schooling</li>
-                            <li onclick="showinstitutional()" data-filter=".institutional-brand">Institutional Branding
+                            <li onclick="showhide()" id="virtualclass" data-filter=".virtual-school" class="active">Virtual Schooling</li>
+                            <li onclick="showinstitutional()" id="instbrand" data-filter=".institutional-brand">Institutional Branding
                             </li>
-                            <li onclick="showsmart()" data-filter=".smart-teacher">Smart Teacher Training</li>
+                            <li onclick="showsmart()" id="smartteacher" data-filter=".smart-teacher">Smart Teacher Training</li>
                             <li onclick="showstudent()" data-filter=".student-groom">Student Grooming</li>
                             <li onclick="showinternational()" data-filter=".International-Exchange">International
                                 Exchange Programme</li>
@@ -1300,10 +1300,10 @@
                         <div class="footer-link">
                             <h6 class="footer-title">Solutions</h6>
                             <ul>
-                                <li><a href="#">Virtual Classroom App</a></li>
-                                <li><a href="#">Self Learning App</a></li>
-                                <li><a href="#">Institutional Branding</a></li>
-                                <li><a href="#portfolio" onclick="showsmart()" data-filter=".smart-teacher">Smart Teacher Training</a></li>
+                                <li><a href="#portfolio" class="goto" data-id="virtualclass">Virtual Classroom App</a></li>
+                                <li><a href="#portfolio" class="goto" data-id="selflearning">Self Learning App</a></li>
+                                <li><a href="#portfolio" class="goto" data-id="instbrand">Institutional Branding</a></li>
+                                <li><a href="#portfolio" class="goto" data-id="smartteacher">Smart Teacher Training</a></li>
                             </ul>
                         </div> <!-- footer link -->
                     </div>
@@ -1591,11 +1591,16 @@
         });
     });
 </script>
-
+<script>
+  $('body').on('click', '.goto', function(event) {
+    var id = $(this).attr('data-id');
+    $( "#"+id ).trigger( "click" );
+  });
+</script>
 @if ($errors->any())
 @foreach ($errors->all() as $error)
 <script type="text/javascript">
-    toastr.error('{{$error}}')
+    toastr.error('{{$error}}');
 </script>
 @endforeach
 @endif
@@ -1619,7 +1624,7 @@
     Toast.fire({
         icon: "{{ Session::get('flash_type') }}",
         title: "<h6><b>{{ Session::get('flash_message') }}</b></h6>"
-    })
+    });
 </script>
 @endif
 

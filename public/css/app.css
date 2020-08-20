@@ -4548,8 +4548,11 @@ input[type=button].btn-block {
 }
 
 .navbar-nav .dropdown-menu {
-  position: static;
-  float: none;
+  background: #161f33;
+    border-color: #fff;
+    padding: 2%;
+    position: static;
+    float: none;
 }
 
 .navbar-text {
