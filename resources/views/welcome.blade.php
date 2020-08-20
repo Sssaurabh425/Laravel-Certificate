@@ -1367,7 +1367,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                <div class="text-center" style="font-size:small;color:red;">We will provide one free consultation call and all relevant documents will be send via mail provided below</div>
+                    <div class="text-center" style="font-size:small;color:red;">We will provide one free consultation call and all relevant documents will be send via mail provided below</div>
                     <form role="form" id="saveteacher" enctype="multipart/form-data" method="post" action="{{route('savecontact')}}">
                         <div class="card-body">
                             <div class="form-group">
@@ -1384,16 +1384,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="entityvalue">Entity</label>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="radio" checked id="Individual" name="entityvalue" value="Individual">
-                                        <label for="Individual">Individual</label><br>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="radio" id="Institutional" name="entityvalue" value="Institutional">
-                                        <label for="Institutional">Institutional</label><br>
-                                    </div>
-                                </div>
+                                <select class="form-control" name="entityvalue" id="entityvalue">
+                                    <option value="" selected>Select Entity</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="School">School</option>
+                                    <option value="Coaching">Coaching</option>
+                                    <option value="College/University">College / University</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="institutionname">Institution Name</label>

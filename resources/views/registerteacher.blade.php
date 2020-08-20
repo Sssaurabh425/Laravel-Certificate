@@ -48,34 +48,45 @@
 
 
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h3 class="register-heading"><b>Apply For <span id="ent">Individual</span></b></h3>
-                            <div class="row register-form" style="width:100%;">
-                                <div class="col-md-12">
-                                    <form role="form" id="saveteacher" method="post" action="{{route('registerteacher')}}">
-                                        <div class="form-group">
-                                            <input type="text" id="teachername" name="teachername" class="form-control" placeholder="Full Name *" value="" />
+                            <h3 class="register-heading"><b>Apply For <span id="ent">Individual</span> Training & Certification</b></h3>
+                            <div class="row register-form">
+
+                                <form role="form" id="saveteacher" method="post" action="{{route('saveteacher')}}">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" id="teachername" name="teachername" class="form-control" placeholder="Full Name *" value="" />
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="email" id="teacheremail" name="teacheremail" class="form-control" placeholder="Email *" value="" />
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" id="teacheremail" name="teacheremail" class="form-control" placeholder="Email *" value="" />
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" id="mobileno" name="mobileno" class="form-control" placeholder="Phone Number *" value="" />
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" id="mobileno" name="mobileno" class="form-control" placeholder="Phone Number *" value="" />
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" id="institutionname" name="institutionname" class="form-control" placeholder="Institution Name (optional)" value="" />
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" id="institutionname" name="institutionname" class="form-control" placeholder="Institution Name (optional)" value="" />
+                                            </div>
                                         </div>
                                         <input type="hidden" id="entityvalue" name="entityvalue" value="Individual" />
-                                        <div class="form-group">
-                                            <select class="form-control" name="selectlevel" id="selectlevel">
-                                                <option value="" selected>Select Certification Level</option>
-                                                <option value="beginner">Beginner</option>
-                                                <option value="intermediate">Intermediate</option>
-                                                <option value="advanced">Advanced</option>
-                                            </select>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <select class="form-control" name="selectlevel" id="selectlevel">
+                                                    <option value="" selected>Select Certification Level</option>
+                                                    <option value="beginner">Beginner</option>
+                                                    <option value="intermediate">Intermediate</option>
+                                                    <option value="advanced">Advanced</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <input type="submit" class="btnRegister" value="Register" />
-                                    </form>
-                                </div>
+                                    </div>
+                                    <button type="submit" class="btnRegister">Register</button>                               </form>
+
                             </div>
                         </div>
                     </div>

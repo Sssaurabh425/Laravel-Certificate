@@ -25,11 +25,6 @@ Route::post('/updatecourse', 'CertificateController@updatecourse')->name('update
 Route::get('/course', 'CertificateController@course')->name('course');
 Route::post('/getcourse', 'CertificateController@getcourse')->name('getcourse');
 Auth::routes();
-
-
-
-Auth::routes();
-
 Route::get('/home', 'CertificateController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('index');
 
