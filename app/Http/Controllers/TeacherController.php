@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     //
-    public function registerteacher(TeacherRequest $request)
+    public function saveteacher(TeacherRequest $request)
     {
 
         $teacher = new Teacher();
@@ -17,6 +17,7 @@ class TeacherController extends Controller
         $teacher->email = $request->teacheremail;
         $teacher->mobileno = $request->mobileno;
         $teacher->entity = $request->entityvalue;
+        $teacher->institutionname = $request->institutionname;
         $teacher->certificationlevel = $request->selectlevel;
         $teacher->save();
         //dd($data['teacher'][0]->id);
@@ -29,5 +30,9 @@ class TeacherController extends Controller
 
         $data['teacher'] = Teacher::all();
         return view('teacher')->with($data);
+    }
+    public function registerteacher()
+    {
+        return view('registerteacher');
     }
 }

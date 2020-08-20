@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/tcpdf/{id?}', 'CertificateController@index')->name('createPDF');
 Route::get('/teachers', 'TeacherController@teachers')->name('teachers');
+Route::get('/contacts', 'ContactController@contacts')->name('contacts');
 Route::get('/certificates', 'CertificateController@certificates')->name('certificate');
 Route::post('/savecertificate', 'CertificateController@savecertificate')->name('savecertificate');
 Route::post('/savecourse', 'CertificateController@savecourse')->name('savecourse');
@@ -30,7 +31,11 @@ Auth::routes();
 Auth::routes();
 
 Route::get('/home', 'CertificateController@index')->name('home');
-Route::get('/', function () {
-    return view('welcome');
-})->name('');
-Route::post('/registerteacher', 'TeacherController@registerteacher')->name('registerteacher');
+Route::get('/', 'HomeController@index')->name('index');
+
+Route::post('/saveteacher', 'TeacherController@saveteacher')->name('saveteacher');
+Route::post('/savecontact', 'HomeController@savecontact')->name('savecontact');
+Route::get('/registerteacher', 'TeacherController@registerteacher')->name('registerteacher');
+Route::get('/termsandconditions', 'HomeController@termsandconditions')->name('termsandconditions');
+Route::get('/privacypolicies', 'HomeController@privacypolicies')->name('privacypolicies');
+Route::post('/updatecontactstatus', 'ContactController@updatecontactstatus')->name('updatecontactstatus');
