@@ -11,7 +11,7 @@
     transition: 300ms;
   }
 </style>
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -41,8 +41,8 @@
               <label for="coursename">Anchor Signature</label>
               <input type="file" class="form-control" id="asignature" accept="image/*" placeholder="Enter Anchor Signature" name="asignature">
             </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary btn-lg pl-5 pr-5 ">Submit</button>
+            <div class="header-btn rounded-buttons text-center">
+              <button type="submit" class="main-btn rounded-three pl-5 pr-5 ">Submit</button>
 
             </div>
           </form>

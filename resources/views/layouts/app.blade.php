@@ -17,7 +17,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('plugins/datatable/datatables.min.js')}}"></script>
@@ -32,6 +33,8 @@
     <!-- Toastr -->
     <script type="text/javascript" src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
+    <!--====== Main js ======-->
+    <script src="assets/js/main.js"></script>
 </head>
 
 <body>

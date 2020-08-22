@@ -11,7 +11,7 @@
     transition: 300ms;
   }
 </style>
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -52,8 +52,8 @@
               <label for="teacherdoc">Date of Certification</label>
               <input type="date" class="form-control" id="teacherdoc" placeholder="Enter Teacher DOB" name="teacherdoc">
             </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary btn-lg pl-5 pr-5 ">Submit</button>
+            <div class="header-btn rounded-buttons text-center">
+              <button type="submit" class="main-btn rounded-three pl-5 pr-5 ">Submit</button>
 
             </div>
           </form>

@@ -1111,6 +1111,13 @@ p {
   font-size: 14px;
   margin-top: 5px;
 }
+.navbar-nav .dropdown-menu {
+  background: #161f33;
+    border-color: #fff;
+    padding: 2%;
+    position: static;
+    float: none;
+}
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .navbar-area .navbar .navbar-nav .nav-item .sub-menu li a i {
