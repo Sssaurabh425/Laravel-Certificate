@@ -87,7 +87,7 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="#">
-                                <img src="assets/images/logo-1.png" style="height:70px;" alt="Logo">
+                                <img src="{{asset('assets/images/logo-1.png')}}" style="height:70px;" alt="Logo">
                             </a>
 
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarEight" aria-controls="navbarEight" aria-expanded="false" aria-label="Toggle navigation">
@@ -153,7 +153,7 @@
                 </div> <!-- row -->
             </div> <!-- container -->
             <div class="header-shape">
-                <img src="assets/images/header-shape.svg" alt="shape">
+                <img src="{{asset('assets/images/header-shape.svg')}}" alt="shape">
             </div>
         </div> <!-- header content -->
 
@@ -169,7 +169,7 @@
         </div>
         <div class="sidebar-content">
             <div class="sidebar-logo text-center">
-                <a href="#"><img src="assets/images/logo-1.png" alt="Logo"></a>
+                <a href="#"><img src="{{asset('assets/images/logo-1.png')}}" alt="Logo"></a>
             </div> <!-- logo -->
             <div class="sidebar-menu">
                 <ul>
@@ -209,7 +209,7 @@
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
                         <div class="about-icon">
-                            <img src="assets\images\Deliverables\virtualclassroom_3.png" alt="Icon">
+                            <img src="{{asset('assets\images\Deliverables\virtualclassroom_3.png')}}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Virtual Classroom App</h4>
@@ -220,7 +220,7 @@
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
                         <div class="about-icon">
-                            <img src="assets\images\Deliverables\SelfLearning.png" alt="Icon">
+                            <img src="{{asset('assets\images\Deliverables\SelfLearning.png')}}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Self Learning App</h4>
@@ -232,7 +232,7 @@
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".2s">
                         <div class="about-icon">
-                            <img src="assets\images\Deliverables\solvedpracticeexercise.png" alt="Icon">
+                            <img src="{{asset('assets\images\Deliverables\solvedpracticeexercise.png')}}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Solved Practice Exercises</h4>
@@ -243,7 +243,7 @@
                 <div class="col-lg-6">
                     <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".2s">
                         <div class="about-icon">
-                            <img src="assets\images\Deliverables\Competitiveexamreparation.png" alt="Icon">
+                            <img src="{{asset('assets/images/Deliverables/Competitiveexamreparation.png')}}" alt="Icon">
                         </div>
                         <div class="about-content media-body">
                             <h4 class="about-title">Competitive Exam Preparation</h4>
@@ -297,7 +297,7 @@
                         <div class="col-lg-6 ">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\virtualschooling\liveclasses.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\virtualschooling\liveclasses.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Live Classes</h5>
@@ -314,7 +314,7 @@
                         <div class="col-lg-6 ">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\virtualschooling\practiceexercises2.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\virtualschooling\practiceexercises2.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Practice Exercises</h5>
@@ -331,7 +331,7 @@
                         <div class="col-lg-6 ">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\virtualschooling\selfexplanatoryvideos2.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\virtualschooling\selfexplanatoryvideos2.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Self Explanatory Videos</h5>
@@ -348,7 +348,7 @@
                         <div class="col-lg-6 ">
                             <div class="single-about d-sm-flex mt-30  Features pb-3 pt-2 pl-2 media">
 
-                                <img src="assets\images\KeyFeatures\virtualschooling\onlineassessment2.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\virtualschooling\onlineassessment2.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Online Assessments</h5>
@@ -365,7 +365,7 @@
                         <div class="col-lg-6 ">
                             <div class="single-about d-sm-flex mt-30 Features pb-3 pt-2 pl-2 media">
 
-                                <img src="assets\images\KeyFeatures\virtualschooling\mocktest.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\virtualschooling\mocktest.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Mock Tests</h5>
@@ -383,7 +383,7 @@
                         <div class="col-lg-6 ">
                             <div class="single-about media d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\virtualschooling\Additionalresources.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\virtualschooling\Additionalresources.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Additional Resources</h5>
@@ -404,7 +404,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex mt-30   pb-3 pt-2 pl-2 Features media ">
 
-                                <img src="assets\images\KeyFeatures\InstitutionalBranding\School Website_2.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\InstitutionalBranding\School Website_2.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">School Website</h5>
@@ -421,7 +421,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media ">
 
-                                <img src="assets\images\KeyFeatures\InstitutionalBranding\DigitalmarketingSetup.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\InstitutionalBranding\DigitalmarketingSetup.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Digital Marketing Setup</h5>
@@ -439,7 +439,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex  mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\InstitutionalBranding\PromotinalVideo.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\InstitutionalBranding\PromotinalVideo.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Promotional Videos</h5>
@@ -458,7 +458,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\SmartTeacherTraining\OnlineTeacherAssessment_2.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\SmartTeacherTraining\OnlineTeacherAssessment_2.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Online Teacher Assessment</h5>
@@ -476,7 +476,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex  mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\SmartTeacherTraining\OnlineTeacherTrainingCourse.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\SmartTeacherTraining\OnlineTeacherTrainingCourse.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Online Teacher Training Course</h5>
@@ -493,7 +493,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex  mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\SmartTeacherTraining\SmartTeacherCertification.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\SmartTeacherTraining\SmartTeacherCertification.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Smart Teacher Certification</h5>
@@ -512,7 +512,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex  mt-30 pb-3 pt-2 pl-2 Features media">
                                 <div class="about-icon">
-                                    <img src="assets\images\KeyFeatures\Studentgrooming\Careerguidance.png" alt="Icon" class="align-self-center mr-3">
+                                    <img src="{{asset('assets\images\KeyFeatures\Studentgrooming\Careerguidance.png')}}" alt="Icon" class="align-self-center mr-3">
                                 </div>
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Career Guidance</h5>
@@ -529,7 +529,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\Studentgrooming\resumewriting.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\Studentgrooming\resumewriting.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Resume Writing</h5>
@@ -546,7 +546,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\Studentgrooming\Softskilltraining.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\Studentgrooming\Softskilltraining.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Soft Skill Training</h5>
@@ -562,7 +562,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\InternationalExchangeProgram\InternationalExposure.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\InternationalExchangeProgram\InternationalExposure.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">International Exposure</h5>
@@ -579,7 +579,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\InternationalExchangeProgram\CulturalExposure.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\InternationalExchangeProgram\CulturalExposure.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Cultural Exposure</h5>
@@ -597,7 +597,7 @@
                         <div class="col-lg-6">
                             <div class="single-about d-sm-flex mt-30 pb-3 pt-2 pl-2 Features media">
 
-                                <img src="assets\images\KeyFeatures\InternationalExchangeProgram\LanguageAcquisition.png" alt="Icon" class="align-self-center mr-3">
+                                <img src="{{asset('assets\images\KeyFeatures\InternationalExchangeProgram\LanguageAcquisition.png')}}" alt="Icon" class="align-self-center mr-3">
 
                                 <div class="about-content media-body">
                                     <h5 class="mt-0 mb-1">Language Acquisition </h5>
@@ -1050,7 +1050,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-7 text-center">
                         <div class="row mb-5 mb-lg-0 wow fadeInLeft" data-wow-duration=".8s" data-wow-delay="0s">
-                            <img src="assets/images/vision.png" alt="Girl in a jacket" width="100%" height="100%">
+                            <img src="{{asset('assets/images/vision.png')}}" alt="Girl in a jacket" width="100%" height="100%">
                         </div>
 
                     </div>
@@ -1070,14 +1070,14 @@
                     </div>
                     <div class="col-lg-7 text-center">
                         <div class="row mb-5 mb-lg-0 wow fadeInRight" data-wow-duration=".8s" data-wow-delay="0.1s">
-                            <img src="assets/images/mission.png" alt="Girl in a jacket" width="100%" height="100%">
+                            <img src="{{asset('assets/images/mission.png')}}" alt="Girl in a jacket" width="100%" height="100%">
                         </div>
                     </div>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-lg-7 text-center">
                         <div class="row mb-5 mb-lg-0 wow fadeInLeft" data-wow-duration=".8s" data-wow-delay="0.2s">
-                            <img src="assets/images/story.png" alt="Girl in a jacket" width="100%" height="100%">
+                            <img src="{{asset('assets/images/story.png')}}" alt="Girl in a jacket" width="100%" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-5 ml-auto order-lg-1 wow fadeInRight" data-wow-duration=".8s" data-wow-delay="0.2s">
@@ -1342,7 +1342,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="footer-logo text-center mt-10">
-                            <a href="index.html"><img style="height: 100px !important;" src="assets/images/logo-1.png" alt="Logo"></a>
+                            <a href="index.html"><img style="height: 100px !important;" src="{{asset('assets/images/logo-1.png')}}" alt="Logo"></a>
                         </div> <!-- footer logo -->
                     </div>
                     <div class="col-lg-5">
@@ -1592,10 +1592,10 @@
     });
 </script>
 <script>
-  $('body').on('click', '.goto', function(event) {
-    var id = $(this).attr('data-id');
-    $( "#"+id ).trigger( "click" );
-  });
+    $('body').on('click', '.goto', function(event) {
+        var id = $(this).attr('data-id');
+        $("#" + id).trigger("click");
+    });
 </script>
 @if ($errors->any())
 @foreach ($errors->all() as $error)
