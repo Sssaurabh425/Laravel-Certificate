@@ -26,7 +26,10 @@ class ContactRequest extends FormRequest
         return [
             'contactname' => 'min:5|max:255|required|regex:/^[a-zA-Z ]*$/',
             'contactemail' => 'required|email',
-            'mobileno' => 'required|regex:/^[0-9]+$/|min:10|max:12'
+            'mobileno' => 'required|regex:/^[0-9]+$/|min:10|max:12',
+            'institutionname' => 'required',
+            'city' => 'required',
+            'state' => 'required',
 
         ];
     }

@@ -819,7 +819,11 @@ p {
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
 }
-
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #16181b !important;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
 .navbar-area .navbar-brand img {
   max-width: 150px;
 }

@@ -117,15 +117,15 @@
               <input type="text" name="ecoursename" id="ecoursename" class="form-control">
             </div>
             <div class="form-group">
-              <label for="ecoursedesc">Description</label>
+              <label for="ecoursedesc">Course Description</label>
               <textarea id="ecoursedesc" name="ecoursedesc" class="form-control ckeditor" rows="5" placeholder="Enter Description..."></textarea>
             </div>
             <div class="form-group">
-              <label for="eaname">Name</label>
+              <label for="eaname">Anchor Name</label>
               <input type="text" name="eaname" id="eaname" class="form-control">
             </div>
             <div class="form-group">
-              <label for="earole">Description</label>
+              <label for="earole">Anchor Role</label>
               <input type="text" name="earole" id="earole" class="form-control">
             </div>
             <div class="row">

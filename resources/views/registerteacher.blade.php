@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="text" id="institutionname" name="institutionname" class="form-control" placeholder="Institution Name (optional)" value="" />
+                                                <input type="text" id="institutionname" name="institutionname" class="form-control" placeholder="Institution Name *" value="" />
                                             </div>
                                         </div>
                                         <input type="hidden" id="entityvalue" name="entityvalue" value="Individual" />
@@ -82,6 +82,16 @@
                                                     <option value="intermediate">Intermediate</option>
                                                     <option value="advanced">Advanced</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" id="city" name="city" class="form-control" placeholder="City *" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" id="state" name="state" class="form-control" placeholder="State *" value="" />
                                             </div>
                                         </div>
                                     </div>
@@ -148,7 +158,17 @@
                     },
                     selectlevel: {
                         required: true
+                    },
+                    institutionname: {
+                        required: true
+                    },
+                    city: {
+                        required: true
+                    },
+                    state: {
+                        required: true
                     }
+                    
                 },
                 messages: {
                     teachername: {
@@ -164,6 +184,15 @@
                     },
                     selectlevel: {
                         required: "Select Level Of Certification"
+                    },
+                    institutionname: {
+                        required: "Enter Institution Name"
+                    },
+                    city: {
+                        required: "Enter City"
+                    },
+                    state: {
+                        required: "Enter State"
                     }
                 },
                 errorElement: 'span',

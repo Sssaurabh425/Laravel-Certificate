@@ -50,14 +50,12 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-4 text-left  ">
-                                <div class="header-btn rounded-buttons text-center text-decoration-none">
+                            <div class="col-md-4">
                                     @if (Route::has('password.request'))
-                                    <a class="btn btn-link" class="text-decoration-none" href="{{ route('password.request') }}">
+                                    <a class="btn-link" class="text-decoration-none" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                     @endif
-                                </div>
                             </div>
                         </div>
 

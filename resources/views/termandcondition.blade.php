@@ -609,7 +609,7 @@
                         <p>Approved organizations may hyperlink to our Website as follows:
                         </p>
 
-                        <ol style="list-style-type: decimal;"> 
+                        <ol style="list-style-type: decimal;">
                             <li>
                                 <p>
                                     By use of our corporate name.
@@ -1037,29 +1037,6 @@
 
 
 
-        <!--====== portfolio PART ENDS ======-->
-        <section id="social" class="portfolio-area">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-center pb-20">
-                        <h3 class="title">Our Social Presence</h3>
-                    </div> <!-- row -->
-                </div>
-            </div> <!-- row -->
-            <div class="container text-center">
-                <div class="row justify-content-center">
-
-                    <a target="_blank" href="https://www.facebook.com/eEdPort/?ref=aymt_homepage_panel&eid=ARCBqzK2__TNHwk7BNW0sZ_oWFM0IvHmdY-FDdEfmU53ssgLiCXbgwFPlB9YkVl9yHDyQSyJrafLcVi-"><i style="color:blue;" class="fa mainpageicon fa-facebook-f"></i></a>
-
-                    <a target="_blank" href="https://www.youtube.com/channel/UCy76UlnIMTWXk_aN4ZnmDdA"><i style="color:#bb0000;" class="fa mainpageicon fa-youtube"></i></a>
-
-                    <a target="_blank" href="https://www.instagram.com/e_edport/?hl=en"><i style="color:#bf155c;" class="fa mainpageicon fa-instagram"></i></a>
-
-                </div>
-
-            </div>
-        </section>
-
 
 
 
@@ -1067,53 +1044,7 @@
         <!--====== FOOTER FOUR PART START ======-->
 
         <footer id="footer" class="contact-area footer-area">
-            <div class="footer-widget">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="footer-link">
-                                <h6 class="footer-title">Company</h6>
-                                <ul>
-                                    <li><a href="#about">About</a></li>
-                                    <li><a href="#contact">Contact</a></li>
-                                    <li><a href="#pricing">Plans</a></li>
-                                </ul>
-                            </div> <!-- footer link -->
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="footer-link">
-                                <h6 class="footer-title">Solutions</h6>
-                                <ul>
-                                    <li><a href="#">Virtual Classroom App</a></li>
-                                    <li><a href="#">Self Learning App</a></li>
-                                    <li><a href="#">Institutional Branding</a></li>
-                                    <li><a href="#">Smart Teacher Training</a></li>
-                                </ul>
-                            </div> <!-- footer link -->
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="footer-link">
-                                <h6 class="footer-title">Plan</h6>
-                                <ul>
-                                    <li><a href="#basic">Basic</a></li>
-                                    <li><a href="#standard">Standard</a></li>
-                                    <li><a href="#premium">Premium</a></li>
-                                </ul>
-                            </div> <!-- footer link -->
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="footer-link">
-                                <h6 class="footer-title">Help & Support</h6>
-                                <ul>
-                                    <li><a href="#">Support Center</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                </ul>
-                            </div> <!-- footer link -->
-                        </div>
-                    </div> <!-- row -->
-                </div> <!-- container -->
-            </div> <!-- footer widget -->
+
 
             <div class="footer-copyright">
                 <div class="container">

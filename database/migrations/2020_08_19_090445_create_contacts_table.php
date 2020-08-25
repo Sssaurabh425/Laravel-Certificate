@@ -20,6 +20,9 @@ class CreateContactsTable extends Migration
             $table->string('mobileno');
             $table->string('entity');
             $table->string('institutionname')->nullable();
+            $table->string('city');
+            $table->string('state');
+            $table->string('status')->default('pending');;
             $table->timestamps();
         });
     }

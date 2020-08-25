@@ -1322,7 +1322,7 @@
                             <h6 class="footer-title">Help & Support</h6>
                             <ul>
                                 <li><a href="#">Support Center</a></li>
-                                <li><a href="#">FAQ</a></li>
+                                <li><a target="_blank" href="{{route('faq')}}">FAQ</a></li>
                                 <li><a target="_blank" href="{{route('termsandconditions')}}">Terms & Conditions</a></li>
                                 <li><a target="_blank" href="{{route('privacypolicies')}}">Privacy Policy</a></li>
                             </ul>
@@ -1370,31 +1370,64 @@
                     <div class="text-center" style="font-size:small;color:red;">We will provide one free consultation call and all relevant documents will be send via mail provided below</div>
                     <form role="form" id="saveteacher" enctype="multipart/form-data" method="post" action="{{route('savecontact')}}">
                         <div class="card-body">
-                            <div class="form-group">
-                                <label for="contactname">Name</label>
-                                <input type="text" id="contactname" name="contactname" class="form-control" placeholder="Full Name *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <label for="contactemail">Email</label>
-                                <input type="email" id="contactemail" name="contactemail" class="form-control" placeholder="Email *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <label for="mobileno">Mobile No.</label>
-                                <input type="text" id="mobileno" name="mobileno" class="form-control" placeholder="Phone Number *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <label for="entityvalue">Entity</label>
-                                <select class="form-control" name="entityvalue" id="entityvalue">
-                                    <option value="" selected>Select Entity</option>
-                                    <option value="Teacher">Teacher</option>
-                                    <option value="School">School</option>
-                                    <option value="Coaching">Coaching</option>
-                                    <option value="College/University">College / University</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="institutionname">Institution Name</label>
-                                <input type="text" id="institutionname" name="institutionname" class="form-control" placeholder="Institution Name (optional)" value="" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="contactname">Name</label>
+                                        <input type="text" id="contactname" name="contactname" class="form-control" placeholder="Full Name *" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="contactemail">Email</label>
+                                        <input type="email" id="contactemail" name="contactemail" class="form-control" placeholder="Email *" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="mobileno">Mobile No.</label>
+                                        <input type="text" id="mobileno" name="mobileno" class="form-control" placeholder="Phone Number *" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="entityvalue">Entity</label>
+                                        <select class="form-control" name="entityvalue" id="entityvalue">
+                                            <option value="" selected>Select Entity</option>
+                                            <option value="Teacher">Teacher</option>
+                                            <option value="School">School</option>
+                                            <option value="Coaching">Coaching</option>
+                                            <option value="College/University">College / University</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="institutionname">Institution Name</label>
+                                        <input type="text" id="institutionname" name="institutionname" class="form-control" placeholder="Institution Name *" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        <select class="form-control filter" name="state" id="state">
+                                            <option value="" selected>Select State</option>
+                                            @foreach($state as $st)
+                                            <option value="{{$st->id}}">{{ucwords($st->name)}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <select class="form-control" name="city" id="city">
+                                            <option value="" selected>Select City</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="modal-footer justify-content-center">
@@ -1474,6 +1507,31 @@
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
 
 </body>
+<script>
+    $(document).ready(function() {
+        $('.filter').on('change', function() {
+            var state_id = $('#state').val();
+            $.ajax({
+                url: "{{route('getcity')}}",
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    'state_id': state_id
+                },
+                success: function(data) {
+                    var listItems1;
+                    listItems1 += "<option value=''>Select City</option>";
+                    for (var i = 0; i < data.length; i++) {
+                        listItems1 += "<option value='" + data[i].id + "'>" + data[i].name+ "</option>";
+                    }
+
+                    $("#city").html(listItems1);
+
+                }
+            });
+        });
+    });
+</script>
 <script>
     function showhide() {
         $('.portfolio-card').addClass('hidden');
@@ -1559,6 +1617,15 @@
                 },
                 entityvalue: {
                     required: true
+                },
+                institutionname: {
+                    required: true
+                },
+                city: {
+                    required: true
+                },
+                state: {
+                    required: true
                 }
             },
             messages: {
@@ -1575,6 +1642,15 @@
                 },
                 entityvalue: {
                     required: "Select The Entity"
+                },
+                institutionname: {
+                    required: "Enter The Institution Name"
+                },
+                city: {
+                    required: "Enter The City"
+                },
+                state: {
+                    required: "Enter The State"
                 }
             },
             errorElement: 'span',
